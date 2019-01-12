@@ -3,37 +3,50 @@
 }
 
 .info-card {
-    width: 200px;
+    width: 250px;
 }
 
 .spacer {
     flex: 1 1 auto;
-  }
+}
 
-  .scroll-view {
-      max-height: 700px;
-      width: 250px;
-      overflow: hidden;
-      overflow-y: scroll;
-      scroll-behavior: smooth;
-  }
+.scroll-view {
+    max-height: calc(100vh - 75px);
+    width: 300px;
+    overflow: hidden;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    padding:5px
+}
 
   /* width */
 ::-webkit-scrollbar {
     width: 10px;
-  }
+}
   
-  /* Track */
-  ::-webkit-scrollbar-track {
+/* Track */
+::-webkit-scrollbar-track {
     background: #1a1a1a; 
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
     background: #353535; 
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
     background: #555; 
-  }
+}
+
+.right-icon {
+    direction: rtl;
+}
+
+.select-option {
+    background: #555;
+}
+
+.select-option:nth-child(odd) {
+    background: #606060;
+}

@@ -12,63 +12,113 @@
 </mat-toolbar>
 
 <div class="scroll-view">
-  <mat-card class="card-margin info-card">
-    <mat-card-title>Basic Information</mat-card-title>
 
-    <mat-form-field class="full-width">
-      <input matInput placeholder="Name">
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <input matInput placeholder="Summary">
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <textarea matInput placeholder="Description"></textarea>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <mat-select placeholder="Phase">
-        <mat-option *ngFor="let phase of phases" [value]="phase">
-          {{phase.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+  <mat-accordion multi>
 
-  </mat-card>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Basic Information
+        </mat-panel-title>
+        <mat-panel-description class="right-icon">
+          <mat-icon>subject</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Name">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Summary">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <textarea matInput placeholder="Description"></textarea>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-select placeholder="Phase">
+          <mat-option class="select-option" *ngFor="let phase of phaseList" [value]="phase">
+            {{phase.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-expansion-panel>
 
-  <mat-card class="card-margin info-card">
-    <mat-card-title>Rolls</mat-card-title>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Rolls
+        </mat-panel-title>
+        <mat-panel-description class="right-icon">
+          <mat-icon>rotate_90_degrees_ccw</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Roll Target">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-select placeholder="Roll Type">
+          <mat-option class="select-option" *ngFor="let rollType of rollTypeList" [value]="rollType">
+            {{rollType.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Roll Text">
+      </mat-form-field>
+    </mat-expansion-panel>
 
-    <mat-form-field class="full-width">
-      <input matInput placeholder="Roll Target">
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <mat-select placeholder="Roll Type">
-        <mat-option *ngFor="let rollType of rollTypes" [value]="rollType">
-          {{rollType.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <input matInput placeholder="Roll Text">
-    </mat-form-field>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Critical Effects
+        </mat-panel-title>
+        <mat-panel-description class="right-icon">
+          <mat-icon>new_releases</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field class="full-width">
+        <mat-select placeholder="Effect Type">
+          <mat-option class="select-option" *ngFor="let effectType of criticalEffectTypeList" [value]="effectType">
+            {{effectType.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="First Effect">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Second Effect">
+      </mat-form-field>
+    </mat-expansion-panel>
 
-  </mat-card>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Crew
+        </mat-panel-title>
+        <mat-panel-description class="right-icon">
+          <mat-icon>group</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field class="full-width">
+        <mat-select placeholder="Main Role">
+          <mat-option class="select-option" *ngFor="let mainRole of roleList" [value]="mainRole">
+            {{mainRole.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-select multiple placeholder="Secondary Role(s)">
+          <mat-option class="select-option" *ngFor="let role of roleList" [value]="secondaryRoles">
+            {{role.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <p>Cost</p>
+      <mat-slider class="full-width" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step"
+        [thumbLabel]="thumbLabel" [tickInterval]="tickInterval" color="primary" [vertical]="vertical">
+      </mat-slider>
+    </mat-expansion-panel>
 
-  <mat-card class="card-margin info-card">
-    <mat-card-title>Critical Effect</mat-card-title>
+  </mat-accordion>
 
-    <mat-form-field class="full-width">
-      <mat-select placeholder="Effect Type">
-        <mat-option *ngFor="let effectType of effectTypes" [value]="effectType">
-          {{effectType.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <input matInput placeholder="First Effect">
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <input matInput placeholder="Second Effect">
-    </mat-form-field>
-
-  </mat-card>
 </div>

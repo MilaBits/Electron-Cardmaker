@@ -15,7 +15,8 @@ import {
   MatInputModule,
   MatSelectModule,
   MatDividerModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatSliderModule
 } from '@angular/material';
 
 @NgModule({
@@ -37,7 +38,8 @@ import {
     MatInputModule,
     MatSelectModule,
     MatDividerModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
