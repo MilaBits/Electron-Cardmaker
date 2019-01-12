@@ -1,10 +1,39 @@
-.topbar {
-    height: 40px;
-    width: 100%;
-
-    background: #e91e63;
-}
-
 .card-margin {
     margin: 5px;   
 }
+
+.info-card {
+    width: 200px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+  }
+
+  .scroll-view {
+      max-height: 700px;
+      width: 250px;
+      overflow: hidden;
+      overflow-y: scroll;
+      scroll-behavior: smooth;
+  }
+
+  /* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #1a1a1a; 
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #353535; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }

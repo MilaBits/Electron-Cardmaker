@@ -5,7 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatToolbarModule, MatIconModule, MatCardModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatCheckboxModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatCardModule,
+  MatGridListModule,
+  MatInputModule,
+  MatSelectModule,
+  MatDividerModule,
+  MatExpansionModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -21,7 +32,12 @@ import { MatButtonModule, MatCheckboxModule, MatToolbarModule, MatIconModule, Ma
     MatCheckboxModule,
     MatToolbarModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatGridListModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDividerModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
