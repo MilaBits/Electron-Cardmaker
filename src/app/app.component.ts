@@ -17,7 +17,17 @@ export interface Tile {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'card-maker';
+
+  autoTicks = false;
+  disabled = false;
+  invert = false;
+  max = 6;
+  min = 0;
+  showTicks = true;
+  step = 1;
+  thumbLabel = true;
+  sliderValue = 0;
+  vertical = false;
 
   roleList: Role[] = [
     { id: -1, name: 'Pilot' },
