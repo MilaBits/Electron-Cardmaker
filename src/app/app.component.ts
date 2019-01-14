@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Role } from 'src/models/Role';
 import { CriticalEffectType } from 'src/models/CriticalEffectType';
 import { RollType } from 'src/models/RollType';
 import { Phase } from 'src/models/Phase';
+
+import * as interact from 'interactjs';
 
 export interface Tile {
   color: string;
@@ -54,5 +56,4 @@ export class AppComponent {
     { id: 0, name: 'Any Phase' },
     { id: 0, name: 'Any Friendly Phase' }
   ];
-
 }

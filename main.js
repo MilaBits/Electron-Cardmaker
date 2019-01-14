@@ -6,7 +6,7 @@ let win;
 
 function createWindow() {
   win = new BrowserWindow({ width: 800, height: 825 });
-  win.setResizable(false);
+  // win.setResizable(false);
 
   // load the dist folder from Angular
   win.loadURL(

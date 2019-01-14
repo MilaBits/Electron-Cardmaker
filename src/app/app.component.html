@@ -1,124 +1,163 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span>Card Maker</span>
-    <span class="spacer"></span>
-    <button mat-icon-button color="accent">
-      <mat-icon aria-label="Settings">settings</mat-icon>
+<div class="window">
+
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Card Maker</span>
+      <span class="spacer"></span>
+      <button mat-icon-button color="accent">
+        <mat-icon aria-label="Settings">settings</mat-icon>
+      </button>
+      <button mat-icon-button color="accent">
+        <mat-icon aria-label="Save">save</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div class="scroll-view">
+
+    <mat-accordion multi>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Basic Information
+          </mat-panel-title>
+          <mat-panel-description class="
+        right-icon">
+            <mat-icon>subject</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Name">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Summary">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Description"></textarea>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Phase">
+            <mat-option class="select-option" *ngFor="let phase of phaseList" [value]="phase">
+              {{phase.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Rolls
+          </mat-panel-title>
+          <mat-panel-description class="right-icon">
+            <mat-icon>rotate_90_degrees_ccw</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Roll Target">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Roll Type">
+            <mat-option class="select-option" *ngFor="let rollType of rollTypeList" [value]="rollType">
+              {{rollType.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Roll Text">
+        </mat-form-field>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Critical Effects
+          </mat-panel-title>
+          <mat-panel-description class="right-icon">
+            <mat-icon>new_releases</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Effect Type">
+            <mat-option class="select-option" *ngFor="let effectType of criticalEffectTypeList" [value]="effectType">
+              {{effectType.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="First Effect">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Second Effect">
+        </mat-form-field>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Crew
+          </mat-panel-title>
+          <mat-panel-description class="right-icon">
+            <mat-icon>group</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Main Role">
+            <mat-option class="select-option" *ngFor="let mainRole of roleList" [value]="mainRole">
+              {{mainRole.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-select multiple placeholder="Secondary Role(s)">
+            <mat-option class="select-option" *ngFor="let role of roleList" [value]="secondaryRoles">
+              {{role.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <p>Cost </p>
+        <mat-slider class="full-width" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step"
+          [thumbLabel]="thumbLabel" [tickInterval]="tickInterval" color="primary" [vertical]="vertical">
+        </mat-slider>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Image
+          </mat-panel-title>
+          <mat-panel-description class="right-icon">
+            <mat-icon>image</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Image Path">
+        </mat-form-field>
+        <button mat-raised-button color="primary">Browse..</button>
+      </mat-expansion-panel>
+
+    </mat-accordion>
+
+  </div>
+
+  <div class="card-preview">
+    <img src="../assets/test.png" style="width: 100%;" />
+  </div>
+
+  <mat-card class="tools">
+    <button mat-icon-button>
+      <mat-icon aria-label="Example icon-button with a heart icon" color="primary">pan_tool</mat-icon>
     </button>
-    <button mat-icon-button color="accent">
-      <mat-icon aria-label="Save">save</mat-icon>
+    <button mat-icon-button>
+      <mat-icon aria-label="Example icon-button with a heart icon" color="primary">image_search</mat-icon>
     </button>
-  </mat-toolbar-row>
-</mat-toolbar>
-
-<div class="scroll-view">
-
-  <mat-accordion multi>
-
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Basic Information
-        </mat-panel-title>
-        <mat-panel-description class="right-icon">
-          <mat-icon>subject</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Name">
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Summary">
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <textarea matInput placeholder="Description"></textarea>
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <mat-select placeholder="Phase">
-          <mat-option class="select-option" *ngFor="let phase of phaseList" [value]="phase">
-            {{phase.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </mat-expansion-panel>
-
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Rolls
-        </mat-panel-title>
-        <mat-panel-description class="right-icon">
-          <mat-icon>rotate_90_degrees_ccw</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Roll Target">
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <mat-select placeholder="Roll Type">
-          <mat-option class="select-option" *ngFor="let rollType of rollTypeList" [value]="rollType">
-            {{rollType.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Roll Text">
-      </mat-form-field>
-    </mat-expansion-panel>
-
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Critical Effects
-        </mat-panel-title>
-        <mat-panel-description class="right-icon">
-          <mat-icon>new_releases</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <mat-form-field class="full-width">
-        <mat-select placeholder="Effect Type">
-          <mat-option class="select-option" *ngFor="let effectType of criticalEffectTypeList" [value]="effectType">
-            {{effectType.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <input matInput placeholder="First Effect">
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Second Effect">
-      </mat-form-field>
-    </mat-expansion-panel>
-
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Crew
-        </mat-panel-title>
-        <mat-panel-description class="right-icon">
-          <mat-icon>group</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <mat-form-field class="full-width">
-        <mat-select placeholder="Main Role">
-          <mat-option class="select-option" *ngFor="let mainRole of roleList" [value]="mainRole">
-            {{mainRole.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <mat-select multiple placeholder="Secondary Role(s)">
-          <mat-option class="select-option" *ngFor="let role of roleList" [value]="secondaryRoles">
-            {{role.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <p>Cost </p>
-      <mat-slider class="full-width" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step"
-        [thumbLabel]="thumbLabel" [tickInterval]="tickInterval" color="primary" [vertical]="vertical">
-      </mat-slider>
-    </mat-expansion-panel>
-
-  </mat-accordion>
+    <button mat-icon-button>
+      <mat-icon aria-label="Example icon-button with a heart icon" color="primary">transform</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon aria-label="Example icon-button with a heart icon" color="primary">flip</mat-icon>
+    </button>
+  </mat-card>
 
 </div>

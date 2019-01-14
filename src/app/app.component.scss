@@ -50,3 +50,36 @@
 .select-option:nth-child(odd) {
     background: #606060;
 }
+
+.card-preview {
+    position: absolute;
+    top: 70px;
+    left: 315px;
+    bottom: 5px;
+    right: 60px;
+    
+    border-radius: 2px;
+    border: solid 1px #353535;
+}
+
+.window {
+    position: absolute;
+    left: 0;
+    top:0;
+    right: 0;
+    bottom: 0;
+    overflow-y: hidden;
+}
+
+.tools {
+    position: absolute;
+    right: 5px;
+    top: 70px;
+    width: 40px;
+    height: 300px;
+    
+    // background:#252525;
+    background: #353535;
+
+    padding: 5px;
+}
