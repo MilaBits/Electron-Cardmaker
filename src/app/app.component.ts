@@ -5,13 +5,8 @@ import { RollType } from 'src/models/RollType';
 import { Phase } from 'src/models/Phase';
 
 import * as interact from 'interactjs';
-
-export interface Tile {
-  color: string;
-  cols: number;
-  rows: number;
-  content: string;
-}
+import { CardInfo } from 'src/models/CardInfo';
+import { CardField } from 'src/models/CardField';
 
 @Component({
   selector: 'app-root',
@@ -38,7 +33,6 @@ export class AppComponent {
     { id: -1, name: 'Mage' },
     { id: -1, name: 'ScienceOfficer' },
     { id: -1, name: 'Engineer' }];
-
   criticalEffectTypeList: CriticalEffectType[] = [
     { id: 0, name: 'D6' },
     { id: 0, name: 'Positive' },
@@ -56,4 +50,11 @@ export class AppComponent {
     { id: 0, name: 'Any Phase' },
     { id: 0, name: 'Any Friendly Phase' }
   ];
+
+  public nameValue: string = 'testName';
+  public summaryValue: string = 'testSummary';
+  public descriptionValue: string = 'testDescription';
+  public phaseValue: Phase = this.phaseList[0];
+
+  cardInfo: CardInfo;
 }
