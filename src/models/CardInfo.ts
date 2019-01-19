@@ -3,28 +3,27 @@ import { RollType } from './RollType';
 import { Role } from './Role';
 import { CriticalEffectType } from './CriticalEffectType';
 import { CardField } from './CardField';
+import { Coordinate } from './Coordinate';
 
 export class CardInfo {
 
-    name: string;
-    summary: string;
-    description: string;
+    name: CardField = new CardField(new Coordinate(50, 0), 'name', null);
+    summary: CardField = new CardField(new Coordinate(0, 0), 'summary', null);
+    description: CardField = new CardField(new Coordinate(0, 0), 'description', null);
 
-    phase: Phase;
+    phase: CardField = new CardField(new Coordinate(0, 0), 'test', null);
 
-    rollTarget: string;
-    rollType: RollType;
-    rollText: string;
+    rollTarget: CardField = new CardField(new Coordinate(0, 0), 'test', null);
+    rollType: CardField = new CardField(new Coordinate(0, 0), 'test', null);
+    rollText: CardField = new CardField(new Coordinate(0, 0), 'test', null);
 
-    criticalType: CriticalEffectType;
-    firstEffect: string;
-    secondEffect: string;
+    criticalType: CardField = new CardField(new Coordinate(0, 0), 'test', null);
+    firstEffect: CardField = new CardField(new Coordinate(0, 0), 'test', null);
+    secondEffect: CardField = new CardField(new Coordinate(0, 0), 'test', null);
 
-    mainRole: Role;
-    secondaryRoles: Role[];
-    pointCost: number;
+    mainRole: CardField = new CardField(new Coordinate(0, 0), 'test', null);
+    secondaryRoles: CardField = new CardField(new Coordinate(0, 0), 'test', null);
+    pointCost: CardField = new CardField(new Coordinate(0, 0), 'test', null);
 
     background: ImageBitmap;
-
-    cardFields: CardField[];
 }

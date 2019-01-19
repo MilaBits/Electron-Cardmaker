@@ -7,13 +7,23 @@ import { Phase } from 'src/models/Phase';
 import * as interact from 'interactjs';
 import { CardInfo } from 'src/models/CardInfo';
 import { CardField } from 'src/models/CardField';
+import 'fabric';
+declare const fabric: any;
+
+const CANVAS_WIDTH = 370;
+const CANVAS_HEIGHT = 500;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  CANVAS_WIDTH = 370;
+  CANVAS_HEIGHT = 500;
+
+  canvas: any;
 
   autoTicks = false;
   disabled = false;
@@ -51,10 +61,77 @@ export class AppComponent {
     { id: 0, name: 'Any Friendly Phase' }
   ];
 
-  public nameValue: string = 'testName';
-  public summaryValue: string = 'testSummary';
-  public descriptionValue: string = 'testDescription';
-  public phaseValue: Phase = this.phaseList[0];
+  cardInfo: CardInfo = new CardInfo();
 
-  cardInfo: CardInfo;
+  ngOnInit(): void {
+    this.cardInfo.phase.value = this.phaseList[0];
+
+    this.canvas = new fabric.Canvas('canvas');
+    this.canvas.preserveObjectStacking = true;
+    this.canvas.selection = true;
+    this.canvas.selectionColor = 'rgba(233, 30, 99,0.3)';
+    this.canvas.selectionBorderColor = '#E91E63';
+    this.canvas.selectionLineWidth = 1;
+    this.canvas.perPixelTargetFind = true;
+
+    this.drawStatics(this.canvas);
+  }
+
+  drawStatics(canvas: any) {
+    fabric.Image.fromURL('../assets/resources/CardFrame.png', function (img) {
+      canvas.add(img);
+      img.scaleToHeight(CANVAS_HEIGHT);
+      img.scaleToWidth(CANVAS_WIDTH);
+
+      img.hoverCursor = 'default';
+      img.lockMovementX = true;
+      img.lockMovementY = true;
+      img.lockRotation = true;
+      img.hasBorder = false;
+      img.hasControls = false;
+      img.selectable = false;
+    });
+
+    fabric.Image.fromURL('../assets/resources/TitleBar.png', function (img) {
+      canvas.add(img);
+      img.scaleToHeight(CANVAS_HEIGHT);
+      img.scaleToWidth(CANVAS_WIDTH);
+
+      img.hoverCursor = 'default';
+      img.lockMovementX = true;
+      img.lockMovementY = true;
+      img.lockRotation = true;
+      img.hasBorder = false;
+      img.hasControls = false;
+      img.selectable = false;
+    });
+
+    fabric.Image.fromURL('../assets/resources/RollBar.png', function (img) {
+      canvas.add(img);
+      img.scaleToHeight(CANVAS_HEIGHT);
+      img.scaleToWidth(CANVAS_WIDTH);
+
+      img.hoverCursor = 'default';
+      img.lockMovementX = true;
+      img.lockMovementY = true;
+      img.lockRotation = true;
+      img.hasBorder = false;
+      img.hasControls = false;
+      img.selectable = false;
+    });
+  }
+
+  updateCanvas() {
+    this.canvas.clear();
+    this.drawStatics(this.canvas);
+
+    for (const key in this.cardInfo) {
+      if (this.cardInfo.hasOwnProperty(key)) {
+
+        const visual = this.cardInfo[key].getVisualObject();
+        this.canvas.add(visual);
+        this.canvas.bringToFront(visual);
+      }
+    }
+  }
 }

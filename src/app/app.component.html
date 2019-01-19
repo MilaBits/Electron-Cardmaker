@@ -28,16 +28,16 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Name" [(ngModel)]="nameValue">
+          <input matInput placeholder="Name" [(ngModel)]="cardInfo.name.value">
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Summary" [(ngModel)]="summaryValue">
+          <input matInput placeholder="Summary" [(ngModel)]="cardInfo.summary.value">
         </mat-form-field>
         <mat-form-field class="full-width">
-          <textarea matInput placeholder="Description" [(ngModel)]="descriptionValue"></textarea>
+          <textarea matInput placeholder="Description" [(ngModel)]="cardInfo.description.value"></textarea>
         </mat-form-field>
         <mat-form-field class="full-width">
-          <mat-select placeholder="Phase" name="PhaseSelect" [(ngModel)]="phaseValue">
+          <mat-select placeholder="Phase" name="PhaseSelect" [(ngModel)]="cardInfo.phase.value">
             <mat-option class="select-option" *ngFor="let phase of phaseList" [value]="phaseValue">
               {{phase.name}}
             </mat-option>
@@ -141,11 +141,16 @@
 
   </div>
 
-  <div class="card-preview">
-    <img src="../assets/test.png" style="width: 100%;" />
+  <div class="card-container">
+    <div class="canvas-div">
+      <canvas id="canvas" width="370" height="500" class="canvas"></canvas>
+    </div>
   </div>
 
   <mat-card class="tools">
+    <button mat-icon-button>
+      <mat-icon aria-label="Example icon-button with a heart icon" color="primary" (click)="updateCanvas()">refresh</mat-icon>
+    </button>
     <button mat-icon-button>
       <mat-icon aria-label="Example icon-button with a heart icon" color="primary">pan_tool</mat-icon>
     </button>
